@@ -10,6 +10,10 @@ class ChatBot;
 class GraphEdge;
 class GraphNode;
 
+typedef std::unique_ptr<GraphNode> GN;
+typedef std::vector<GN>GN_list;
+
+
 class ChatLogic
 {
 private:
@@ -17,8 +21,15 @@ private:
     ////
 
     // data handles (owned)
-    std::vector<GraphNode *> _nodes;
-    std::vector<GraphEdge *> _edges;
+
+    //exlcusive ownership of _nodes
+
+    //std::vector<std::unique_ptr<GraphNode>> _nodes;
+
+    GN_list _nodes;
+
+    //edges moved to _nodes
+    //std::vector<GraphEdge *> _edges;
 
     ////
     //// EOF STUDENT CODE
@@ -26,6 +37,7 @@ private:
     // data handles (not owned)
     GraphNode *_currentNode;
     ChatBot *_chatBot;
+
     ChatBotPanelDialog *_panelDialog;
 
     // proprietary type definitions
