@@ -39,8 +39,8 @@ void GraphNode::AddEdgeToChildNode(GE &edge)
 //// STUDENT CODE
 ////
 ///
-void GraphNode::MoveChatbotHere(ChatBot &chatbot) // pass by reference will avoid move constructor
-//void GraphNode::MoveChatbotHere(ChatBot chatbot) //uncomment this line and comment above line to use the move contructor
+//void GraphNode::MoveChatbotHere(ChatBot &chatbot) // pass by reference will avoid move constructor
+void GraphNode::MoveChatbotHere(ChatBot chatbot) //uncomment this line and comment above line to use the move contructor
 
 {
     //_chatBot=chatbot;
@@ -51,9 +51,9 @@ void GraphNode::MoveChatbotHere(ChatBot &chatbot) // pass by reference will avoi
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
-    //newNode->MoveChatbotHere(std::move(_chatBot));
+    newNode->MoveChatbotHere(std::move(_chatBot));
 
-    newNode->MoveChatbotHere(_chatBot);
+    //newNode->MoveChatbotHere(_chatBot);
     //_chatBot = nullptr; // invalidate pointer at source
 
 }
